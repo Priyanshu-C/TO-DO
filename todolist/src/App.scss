@@ -44,6 +44,58 @@ body {
     font-family: "Abel";
 }
 
+.input-area {
+    margin-top: 2rem;
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @include bp(sml) {
+        flex-wrap: wrap;
+    }
+    &__heading {
+        font-size: 3rem;
+        font-family: "Abel";
+        flex: 0 0 30%;
+        text-align: center;
+        @include bp(sml) {
+            flex: 0 0 100%;
+            margin-bottom: 2rem;
+        }
+    }
+    &__form {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        &__text {
+            width: 80%;
+            height: 4rem;
+            border: none;
+            border-radius: 1rem;
+            outline: none;
+            font-size: 2rem;
+            padding: 0 4vmin;
+            font-family: "Abel";
+            box-shadow: var(--inner-shadow);
+            background: var(--greyLight-1);
+            color: var(--primary);
+            caret-color: var(--primary);
+        }
+        &__submit {
+            font-size: 4rem;
+            transition: all 0.2s;
+        }
+        &__submit:hover {
+            transform: scale(1.1);
+        }
+        &__submit:active {
+            transform: scale(1);
+        }
+    }
+}
+
 .todo-container {
     height: 95vh;
     width: 98vw;
@@ -95,56 +147,5 @@ body {
         padding: 1rem;
         overflow: auto;
         flex: 1;
-    }
-}
-.input-area {
-    margin-top: 2rem;
-    flex: 0 0 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    @include bp(sml) {
-        flex-wrap: wrap;    
-    }
-    &__heading {
-        font-size: 3rem;
-        font-family: "Abel";
-        flex: 0 0 30%;
-        text-align: center;
-        @include bp(sml) {
-            flex: 0 0 100%;
-            margin-bottom: 2rem;
-        }
-    }
-    &__form {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        &__text {
-            width: 80%;
-            height: 4rem;
-            border: none;
-            border-radius: 1rem;
-            outline: none;
-            font-size: 2rem;
-            padding: 0 4vmin;
-            font-family: "Abel";
-            box-shadow: var(--inner-shadow);
-            background: var(--greyLight-1);
-            color: var(--primary);
-            caret-color: var(--primary);
-        }
-        &__submit {
-            font-size: 4rem;
-            transition: all 0.2s;
-        }
-        &__submit:hover {
-            transform: scale(1.1);
-        }
-        &__submit:active {
-            transform: scale(1);
-        }
     }
 }

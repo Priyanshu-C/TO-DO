@@ -1,12 +1,23 @@
+//Essentials 
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+
+//Styling
 import "./App.scss";
-import { RiChatDeleteLine, RiChatCheckLine, RiAddLine } from "react-icons/ri";
 import { motion, AnimatePresence } from "framer-motion";
+
+//Icons
+import { RiChatDeleteLine, RiChatCheckLine, RiAddLine } from "react-icons/ri";
+
+
 const App = () => {
+
+    //Stores
     const [textField, setTextField] = useState("");
     const [todoList, setTodoList] = useState([]);
     const [doneList, setDoneList] = useState([]);
+
+    //If previous persisted data is there, get that!
     useEffect(() => {
         let todo = JSON.parse(sessionStorage.getItem("todoList"));
         let done = JSON.parse(sessionStorage.getItem("doneList"));
@@ -14,6 +25,7 @@ const App = () => {
         if (done) setDoneList(done);
     }, []);
 
+    //On submit of the text
     const todoSubmit = (e) => {
         e.preventDefault();
         if (textField !== "")
@@ -23,18 +35,23 @@ const App = () => {
             ]);
         setTextField("");
     };
+
+    //delete a todo from either of the lists
     const deleteTodo = (uid) => {
         setTodoList((list) => list.filter((li) => li.uid !== uid));
         setDoneList((list) => list.filter((li) => li.uid !== uid));
     };
+    //move from todo to done tab
     const doneTodo = (uid, text) => {
         deleteTodo(uid);
         setDoneList((list) => [...list, { uid: uid, list: text }]);
     };
+    //update the session storage to persist the data
     useEffect(() => {
         sessionStorage.setItem("todoList", JSON.stringify(todoList));
         sessionStorage.setItem("doneList", JSON.stringify(doneList));
     }, [todoList, doneList]);
+
     return (
         <div className="todo-container">
             <div className="input-area">
